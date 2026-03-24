@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sofía · Asesora de Imagen Profesional | Buenos Aires</title>
+    <meta name="description"
+        content="Asesoría de imagen y personal shopping para profesionales. Outfits que proyectan autoridad, compras inteligentes y cero tiempo perdido frente al espejo." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=Material+Icons&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1F3A5F",
+                        accent: "#BC204B",
+                        "accent-hover": "#9A1A3E",
+                        "accent-dark": "#791431",
+                        "background-light": "#F7F5F2",
+                        "background-paper": "#E7DFD6",
+                        "background-dark": "#0e1a2b",
+                        "surface-dark": "#152840",
+                        slate: {
+                            50: "#f9fafb",
+                            100: "#f3f4f6",
+                            200: "#e6e8eb",
+                            300: "#d1d5db",
+                            400: "#a8adb5",
+                            500: "#8A8F96", // Gris cálido base
+                            600: "#6e7278",
+                            700: "#53565a",
+                            800: "#37393c",
+                            900: "#1c1d1e",
+                        }
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Grain overlay for depth */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.022;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Inputs */
+        .input-minimal {
+            background-color: transparent !important;
+            border: none !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+            border-radius: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            transition: border-color 0.3s ease;
+        }
+
+        .dark .input-minimal {
+            border-bottom-color: #475569 !important;
+            color: white !important;
+        }
+
+        .input-minimal:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            border-bottom: 2px solid #BC204B !important;
+        }
+
+        .input-minimal::placeholder {
+            color: #8A8F96;
+            font-weight: 300;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.12s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.24s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.36s;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            display: none;
+        }
+
+        #mobile-menu.open {
+            display: block;
+        }
+
+        /* Testimonial hover */
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(31, 58, 95, 0.1);
+            /* Sombra primaria */
+        }
+
+        /* CTA pulse (Cherry red) */
+        @keyframes pulse-accent {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(188, 32, 75, 0.35);
+            }
+
+            60% {
+                box-shadow: 0 0 0 10px rgba(188, 32, 75, 0);
+            }
+        }
+
+        .btn-pulse {
+            animation: pulse-accent 2.8s infinite;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            color: white;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-float {
+            animation: pulse-whatsapp 2s infinite;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark bg-paper-texture dark:bg-none text-slate-800 dark:text-slate-200 transition-colors duration-300 antialiased">
+
+    <!-- Navegación -->
+    <nav
+        class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <span class="text-2xl font-display font-medium text-primary dark:text-white tracking-tight">Sofia<span
+                    class="text-accent italic">.</span></span>
+            <div
+                class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-[0.15em] text-slate-600 dark:text-slate-300">
+                <a class="hover:text-accent transition-colors" href="#sobre-mi">Sobre mí</a>
+                <a class="hover:text-accent transition-colors" href="#paquetes">Planes</a>
+                <a class="hover:text-accent transition-colors" href="#portfolio">Casos</a>
+                <button onclick="document.documentElement.classList.toggle('dark')" class="hover:text-accent transition"
+                    title="Cambiar tema">
+                    <span class="material-icons text-[18px]">dark_mode</span>
+                </button>
+                <a class="bg-primary dark:bg-accent text-white dark:text-primary px-6 py-3 text-xs font-bold tracking-widest uppercase hover:opacity-90 transition shadow-lg shadow-primary/20"
+                    href="#reserva">
+                    Reservar lugar
+                </a>
+            </div>
+            <div class="md:hidden flex items-center gap-4">
+                <button onclick="document.documentElement.classList.toggle('dark')"
+                    class="text-primary dark:text-white">
+                    <span class="material-icons">dark_mode</span>
+                </button>
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('open')"
+                    class="text-primary dark:text-white p-2">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu"
+            class="md:hidden bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-6 pb-6 pt-4 space-y-4">
+            <a class="block text-sm font-semibold uppercase tracking-widest text-slate-700 dark:text-slate-200 hover:text-accent py-1"
+                href="#sobre-mi">Sobre mí</a>
+            <a class="block text-sm font-semibold uppercase tracking-widest text-slate-700 dark:text-slate-200 hover:text-accent py-1"
+                href="#servicios">Servicios</a>
+            <a class="block text-sm font-semibold uppercase tracking-widest text-slate-700 dark:text-slate-200 hover:text-accent py-1"
+                href="#paquetes">Planes</a>
+            <a class="block text-sm font-semibold uppercase tracking-widest text-slate-700 dark:text-slate-200 hover:text-accent py-1"
+                href="#portfolio">Casos</a>
+            <a class="block bg-primary text-white text-center py-3 text-sm font-bold uppercase tracking-widest mt-2"
+                href="#reserva">Reservar lugar</a>
+        </div>
+    </nav>
+
+    <!-- 1. Hero -->
+    <header class="relative overflow-hidden pt-12 pb-32 md:pt-20 md:pb-40">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+                <div class="lg:col-span-5 lg:col-start-2 z-20 space-y-8 order-2 lg:order-1 pt-8 lg:pt-0">
+
+                    <!-- Credencial -->
+                    <div
+                        class="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-accent-dark dark:text-accent px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em]">
+                        <span class="material-icons text-[13px]">verified</span>
+                        Asesora certificada
+                    </div>
+                    <h1
+                        class="text-5xl lg:text-[4.5rem] font-display font-medium leading-[1.08] text-primary dark:text-white">
+                        Tu ropa habla<br />antes<br /><span class="italic">que vos.</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-600 dark:text-slate-400 font-light max-w-md leading-relaxed">
+                        Construimos tu sistema de imagen profesional: outfits que proyectan autoridad, compras
+                        inteligentes y 30 minutos recuperados cada mañana.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a class="btn-pulse bg-primary dark:bg-white text-white dark:text-primary px-8 py-4 text-sm uppercase tracking-wider font-bold hover:bg-primary/90 dark:hover:bg-slate-100 transition-all shadow-xl text-center"
+                            href="#reserva">
+                            Reservar tu asesoria
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="lg:col-span-6 lg:col-start-7 order-1 lg:order-2 relative">
+                    <div
+                        class="relative w-full aspect-[4/5] lg:aspect-[3/4] overflow-hidden bg-slate-200 dark:bg-slate-800 lg:translate-x-12">
+                        <img alt="Mujer profesional con outfit estratégico"
+                            class="w-full h-full object-cover object-top" src="assets/img/caso2-despues.png" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/25 to-transparent pointer-events-none">
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -bottom-8 left-4 lg:-left-16 bg-white dark:bg-surface-dark p-5 shadow-2xl border border-slate-100 dark:border-slate-800 max-w-xs flex gap-4 items-center">
+                        <div class="flex -space-x-3 flex-shrink-0">
+                            <img alt="Clienta de Sofia"
+                                class="w-10 h-10 border-2 border-white dark:border-surface-dark rounded-full object-cover"
+                                src="assets/img/clienta-avatar-1.jpeg" />
+                            <img alt="Clienta de Sofia"
+                                class="w-10 h-10 border-2 border-white dark:border-surface-dark rounded-full object-cover"
+                                src="assets/img/clienta-avatar-2.jpeg" />
+                            <img alt="Clienta de Sofia"
+                                class="w-10 h-10 border-2 border-white dark:border-surface-dark rounded-full object-cover"
+                                src="assets/img/clienta-avatar-3.jpeg" />
+                        </div>
+                        <div>
+                            <div class="flex text-accent space-x-0.5 mb-1">
+                                <span class="material-icons text-[13px]">star</span><span
+                                    class="material-icons text-[13px]">star</span><span
+                                    class="material-icons text-[13px]">star</span><span
+                                    class="material-icons text-[13px]">star</span><span
+                                    class="material-icons text-[13px]">star</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 uppercase tracking-widest font-semibold">+100
+                                profesionales<br />transformadas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Sobre Mí -->
+    <section id="sobre-mi"
+        class="py-24 border-t border-slate-200 dark:border-slate-800 bg-background-paper dark:bg-surface-dark">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative max-w-sm mx-auto md:mx-0 reveal">
+                    <img src="assets/img/sofia-retrato.jpeg" alt="Sofía, Asesora de Imagen Profesional en Buenos Aires"
+                        class="w-full aspect-square object-cover object-top grayscale contrast-125 filter hover:grayscale-0 transition duration-700" />
+                    <div class="absolute inset-0 border border-accent translate-x-4 translate-y-4 -z-10"></div>
+                </div>
+                <div class="space-y-6 reveal reveal-delay-1">
+                    <h2 class="text-sm font-bold text-accent uppercase tracking-[0.2em]">La estrategia detrás de la ropa
+                    </h2>
+                    <h3 class="text-3xl md:text-4xl font-display text-primary dark:text-white leading-tight">
+                        Tu imagen es el primer mensaje que mandás antes de abrir la boca.
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        Soy Sofía. Después de trabajar con más de 100 profesionales, sé algo con certeza: el problema no
+                        es la ropa que falta — es el sistema que falta. No te visto a la moda: te construyo un método de
+                        imagen que comunica exactamente quién sos, con lo que ya tenés y las piezas que realmente vale
+                        la pena sumar.
+                    </p>
+                    <a href="#reserva"
+                        class="inline-block text-xs font-bold uppercase tracking-widest text-primary dark:text-white border-b-2 border-accent pb-0.5 hover:text-accent transition-colors">
+                        Reservar mi evaluación →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Formación Banner -->
+    <div class="py-12 border-y border-slate-100 dark:border-white/5 bg-white/20 dark:bg-transparent reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20">
+                <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">Formación académica</span>
+                <div
+                    class="flex items-center gap-12 md:gap-20 opacity-40 hover:opacity-70 transition-opacity duration-700">
+                    <span
+                        class="text-2xl md:text-3xl font-display italic text-primary dark:text-white tracking-tight">Elle</span>
+                    <span
+                        class="text-xl md:text-2xl font-sans font-black tracking-tighter text-primary dark:text-white uppercase">Ejemplo
+                        2</span>
+                    <span
+                        class="text-2xl md:text-3xl font-display font-light text-primary dark:text-white tracking-widest uppercase">Ejemplo
+                        3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Paquetes -->
+    <section id="paquetes" class="py-32 bg-background-paper dark:bg-background-dark relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-6 reveal">
+                <h2 class="text-sm font-bold text-accent uppercase tracking-widest mb-4">Inversión</h2>
+                <h3 class="text-4xl lg:text-5xl font-display font-medium text-primary dark:text-white">Programas a
+                    medida</h3>
+            </div>
+            <p class="text-center text-sm text-slate-500 italic font-light mb-16 reveal">¿Cuánto te costó la última
+                prenda que nunca usaste? Una sesión vale menos que eso.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 max-w-6xl mx-auto items-center">
+
+                <!-- Arranque -->
+                <div
+                    class="p-10 border border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark shadow-sm reveal">
+                    <h4 class="text-2xl font-display text-primary dark:text-white mb-1">Arranque</h4>
+                    <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-8">Para quienes dan el
+                        primer paso</p>
+                    <ul class="space-y-5 mb-10 text-sm font-light text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-3"><span
+                                class="block w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>1 sesión
+                            diagnóstico (90 min)</li>
+                        <li class="flex items-start gap-3"><span
+                                class="block w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>3 looks
+                            base con recomendaciones</li>
+                        <li class="flex items-start gap-3"><span
+                                class="block w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>Guía PDF "5
+                            reglas que cambian todo"</li>
+                    </ul>
+                    <a href="#reserva"
+                        class="block w-full border-b-2 border-primary dark:border-white pb-2 text-center text-sm font-bold uppercase tracking-widest hover:text-accent hover:border-accent transition-colors">
+                        Agendar mi diagnóstico
+                    </a>
+                </div>
+
+                <!-- Renovación (destacado) -->
+                <div
+                    class="relative p-10 border border-accent bg-white dark:bg-surface-dark shadow-2xl py-12 lg:scale-105 z-10 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-accent/5 before:to-transparent before:pointer-events-none reveal reveal-delay-1">
+                    <div
+                        class="absolute top-0 right-8 -translate-y-1/2 bg-accent text-primary text-[10px] font-bold uppercase tracking-widest px-4 py-1.5">
+                        Más elegido</div>
+                    <h4 class="text-3xl font-display font-medium text-primary dark:text-white mb-1">Renovación</h4>
+                    <p class="text-xs uppercase tracking-wider text-accent font-semibold mb-8">La experiencia completa
+                    </p>
+                    <ul class="space-y-5 mb-12 text-sm font-light text-slate-700 dark:text-slate-200">
+                        <li class="flex items-start gap-3"><span
+                                class="material-icons text-accent text-base mt-[-2px] flex-shrink-0">done</span>1 sesión
+                            + personal shopping (3 hs)</li>
+                        <li class="flex items-start gap-3"><span
+                                class="material-icons text-accent text-base mt-[-2px] flex-shrink-0">done</span>10 looks
+                            armados en fotos reales</li>
+                        <li class="flex items-start gap-3"><span
+                                class="material-icons text-accent text-base mt-[-2px] flex-shrink-0">done</span>Lista de
+                            tiendas seleccionadas</li>
+                        <li class="flex items-start gap-3"><span
+                                class="material-icons text-accent text-base mt-[-2px] flex-shrink-0">done</span>Seguimiento
+                            por email 14 días</li>
+                    </ul>
+                    <a href="#reserva"
+                        class="block w-full bg-primary text-white dark:bg-white dark:text-primary py-4 text-center text-sm font-bold uppercase tracking-widest hover:bg-primary/90 dark:hover:bg-slate-100 transition shadow-lg">
+                        Reservar Plan Renovación
+                    </a>
+                </div>
+
+                <!-- Transformación -->
+                <div
+                    class="p-10 border border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark shadow-sm reveal reveal-delay-2">
+                    <h4 class="text-2xl font-display text-primary dark:text-white mb-1">Transformación</h4>
+                    <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-8">Experiencia VIP
+                        integral</p>
+                    <ul class="space-y-5 mb-10 text-sm font-light text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-3"><span
+                                class="block w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>Setup + 2
+                            sesiones completas</li>
+                        <li class="flex items-start gap-3"><span
+                                class="block w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>Shopping +
+                            Cápsula de 30 prendas</li>
+                        <li class="flex items-start gap-3"><span
+                                class="block w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></span>Acceso
+                            Priority + Video Coaching</li>
+                    </ul>
+                    <a href="#reserva"
+                        class="block w-full border-b-2 border-primary dark:border-white pb-2 text-center text-sm font-bold uppercase tracking-widest hover:text-accent hover:border-accent transition-colors">
+                        Consultar disponibilidad
+                    </a>
+                </div>
+
+            </div>
+            <p class="text-center text-xs text-slate-400 font-light mt-10 max-w-sm mx-auto">Disponible en hasta 3
+                cuotas. Política de reembolso total o parcial.</p>
+        </div>
+    </section>
+
+    <!-- 7. Separador Quote -->
+    <section class="py-16 bg-primary dark:bg-[#0a0f0d] relative overflow-hidden">
+        <!-- Decoración sutil de fondo -->
+        <div class="absolute inset-0 opacity-10 flex border-y border-white/10">
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent absolute top-0">
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent absolute bottom-0">
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <span class="material-icons text-accent text-3xl mb-6 opacity-80">format_quote</span>
+            <h3
+                class="text-2xl md:text-4xl lg:text-5xl font-display font-medium text-white leading-[1.3] md:leading-[1.2]">
+                La moda impone reglas.<br /> El estilo <span class="italic"> proyecta quién sos</span>.
+            </h3>
+        </div>
+    </section>
+
+    <!-- 8. Testimonios (3 cards) -->
+    <section class="py-24 bg-background-paper dark:bg-background-dark/80">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-center text-[11px] uppercase tracking-[0.3em] text-accent font-bold mb-14 reveal">Lo que
+                dicen quienes ya dieron el paso</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div
+                    class="testimonial-card bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 p-8 shadow-sm reveal">
+                    <div class="flex text-accent space-x-0.5 mb-5">
+                        <span class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 font-light leading-relaxed text-sm mb-6">
+                        "No solo cambié mi ropa: cambié cómo me presento al mundo. Conseguí la promoción tres meses
+                        después, porque empecé a proyectar la autoridad que siempre tuve."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/img/clienta-avatar-1.jpeg" alt="Lucas M."
+                            class="w-10 h-10 rounded-full object-cover object-top" />
+                        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">— Lucas M.<br /><span
+                                class="font-light normal-case tracking-normal text-[12px]">Director de Marketing</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="testimonial-card bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 p-8 shadow-sm reveal reveal-delay-1">
+                    <div class="flex text-accent space-x-0.5 mb-5">
+                        <span class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 font-light leading-relaxed text-sm mb-6">
+                        "No solo ahorré plata al dejar de comprar 'por si acaso'. La seguridad con la que entro a las
+                        reuniones ahora cambió mis resultados como gerente."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/img/clienta-avatar-2.jpeg" alt="Mariana V."
+                            class="w-10 h-10 rounded-full object-cover object-top" />
+                        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">— Mariana
+                            V.<br /><span class="font-light normal-case tracking-normal text-[12px]">Gerente
+                                Comercial</span></p>
+                    </div>
+                </div>
+
+                <div
+                    class="testimonial-card bg-white dark:bg-surface-dark border border-slate-100 dark:border-slate-800 p-8 shadow-sm reveal reveal-delay-2">
+                    <div class="flex text-accent space-x-0.5 mb-5">
+                        <span class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span><span
+                            class="material-icons text-[15px]">star</span>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 font-light leading-relaxed text-sm mb-6">
+                        "Tenía el armario lleno y siempre me ponía lo mismo. Sofía me enseñó que el problema no era la
+                        ropa, sino que no tenía un sistema. En tres horas lo resolvimos."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/img/clienta-avatar-3.jpeg" alt="Carolina R."
+                            class="w-10 h-10 rounded-full object-cover object-top" />
+                        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">— Carolina
+                            R.<br /><span class="font-light normal-case tracking-normal text-[12px]">Emprendedora</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="py-24 bg-white dark:bg-[#111314]">
+        <div class="max-w-3xl mx-auto px-6">
+            <h3 class="text-2xl font-bold uppercase tracking-widest text-slate-400 text-center mb-12 reveal">Dudas
+                frecuentes</h3>
+            <div class="space-y-1">
+
+                <details class="group border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer reveal">
+                    <summary
+                        class="font-display text-xl md:text-2xl list-none flex justify-between items-center text-primary dark:text-white">
+                        ¿La asesoría es para cualquier cuerpo?
+                        <span
+                            class="material-icons text-accent group-open:rotate-45 transition-transform duration-300">add</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-2xl">
+                        Por supuesto. La moda impone tendencias; la asesoría de imagen crea un sistema adaptado a tu
+                        cuerpo real. Potenciamos tu perfil natural sin forzarte a entrar en moldes genéricos — y sin
+                        depender de lo que "está de moda".
+                    </p>
+                </details>
+
+                <details class="group border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer reveal">
+                    <summary
+                        class="font-display text-xl md:text-2xl list-none flex justify-between items-center text-primary dark:text-white">
+                        ¿Hacen personal shopping de forma online?
+                        <span
+                            class="material-icons text-accent group-open:rotate-45 transition-transform duration-300">add</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-2xl">
+                        Sí. Trabajamos con moodboards y links directos a tiendas de tu país, con recomendaciones
+                        específicas de tallas y combinaciones. El resultado es el mismo que en una sesión presencial.
+                    </p>
+                </details>
+
+                <details class="group border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer reveal">
+                    <summary
+                        class="font-display text-xl md:text-2xl list-none flex justify-between items-center text-primary dark:text-white">
+                        ¿Necesito tirar toda mi ropa?
+                        <span
+                            class="material-icons text-accent group-open:rotate-45 transition-transform duration-300">add</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-2xl">
+                        No. Depuramos lo que ya no funciona, pero reutilizamos y rescatamos muchas prendas con
+                        combinaciones nuevas que quizás nunca imaginaste.
+                    </p>
+                </details>
+
+                <details class="group border-b border-slate-200 dark:border-slate-700 py-6 px-2 cursor-pointer reveal">
+                    <summary
+                        class="font-display text-xl md:text-2xl list-none flex justify-between items-center text-primary dark:text-white">
+                        ¿Cuánto tiempo tarda en verse el cambio?
+                        <span
+                            class="material-icons text-accent group-open:rotate-45 transition-transform duration-300">add</span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-2xl">
+                        Desde el día siguiente a la primera sesión — salís con looks ya armados. El impacto acumulado
+                        (comprar mejor, vestirte más rápido, proyectar más autoridad) lo notás en las primeras dos
+                        semanas.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CTA Final + Formulario -->
+    <section id="reserva"
+        class="py-32 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                <div class="reveal">
+                    <h2 class="text-sm font-bold text-accent uppercase tracking-[0.2em] mb-4">Agenda limitada</h2>
+                    <h3
+                        class="text-4xl lg:text-5xl font-display font-medium text-primary dark:text-white mb-6 leading-tight">
+                        Reservá tu lugar este mes.
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 font-light mb-8 leading-relaxed">
+                        Trabajo con un número limitado de clientes por mes para garantizar atención personalizada.
+                        Completá el formulario y te escribo en menos de 24 horas para coordinar.
+                    </p>
+                    <div class="flex flex-col space-y-5">
+                        <div class="flex items-center gap-4 text-sm font-light text-slate-600 dark:text-slate-300">
+                            <span class="material-icons text-accent text-[20px]">pin_drop</span> Palermo, Buenos Aires
+                        </div>
+                        <div class="flex items-center gap-4 text-sm font-light text-slate-600 dark:text-slate-300">
+                            <span class="material-icons text-accent text-[20px]">language</span> Sesiones 100% online
+                            disponibles
+                        </div>
+                        <div class="flex items-center gap-4 text-sm font-light text-slate-600 dark:text-slate-300">
+                            <span class="material-icons text-accent text-[20px]">schedule</span> Respuesta en menos de
+                            24 horas
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-delay-1">
+                    <form action="https://tuservidor-n8n.com/webhook/reserva-asesoria" method="POST" class="space-y-8">
+                        <div>
+                            <input type="text" name="nombre" required placeholder="Tu nombre completo"
+                                class="w-full input-minimal py-2 bg-transparent text-slate-800 dark:text-white focus:ring-0 placeholder-slate-400 font-light" />
+                        </div>
+                        <div>
+                            <input type="email" name="email" required placeholder="Correo electrónico"
+                                class="w-full input-minimal py-2 bg-transparent text-slate-800 dark:text-white focus:ring-0 placeholder-slate-400 font-light" />
+                        </div>
+                        <div>
+                            <select name="servicio"
+                                class="w-full input-minimal py-2 bg-transparent text-slate-800 dark:text-white focus:ring-0 font-light appearance-none rounded-none cursor-pointer">
+                                <option value="" disabled selected>¿Qué servicio te interesa?</option>
+                                <option value="arranque">Plan Arranque</option>
+                                <option value="renovacion">Plan Renovación (más elegido)</option>
+                                <option value="transformacion">Plan Transformación VIP</option>
+                                <option value="info">Solo busco información</option>
+                            </select>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white dark:bg-white dark:text-primary py-4 text-sm font-bold uppercase tracking-widest hover:bg-primary/90 dark:hover:bg-slate-100 transition mt-4 flex justify-center items-center gap-2 shadow-lg shadow-primary/20">
+                            Reservar mi sesión <span class="material-icons text-[16px]">arrow_forward</span>
+                        </button>
+                        <p class="text-[11px] text-slate-400 font-light leading-relaxed">
+                            Tus datos están protegidos. Solo te escribo para coordinar la sesión — sin spam, sin listas
+                            de mailing.
+                        </p>
+                        <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 text-center md:text-left">
+                            <p class="text-sm font-light text-slate-500 dark:text-slate-400">
+                                ¿Preferís una respuesta inmediata? <br class="md:hidden" />
+                                <a href="https://wa.me/5493416153151?text=Hola%20Sofia!%20Me%20interesa%20tu%20asesoría%20de%20imagen."
+                                    target="_blank"
+                                    class="text-accent font-semibold hover:underline flex items-center justify-center md:justify-start gap-1 mt-2 md:mt-1">
+                                    Escribime por WhatsApp <span class="material-icons text-[16px]">open_in_new</span>
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Footer -->
+    <footer class="bg-primary dark:bg-[#0a0f0d] pt-20 pb-10 text-white/50 text-xs font-light tracking-wide">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <div class="md:col-span-5 space-y-6">
+                <span class="text-3xl font-display font-medium text-white tracking-tight">Sofia<span
+                        class="text-accent italic">.</span></span>
+                <p class="max-w-sm leading-relaxed mt-4">
+                    Tu imagen es una herramienta estratégica. Asesoría de imagen y personal shopping para potenciar tu
+                    identidad profesional — sin que te cueste tiempo ni autenticidad.
+                </p>
+            </div>
+            <div class="md:col-span-3 lg:col-start-8">
+                <h5 class="text-white mb-6 uppercase tracking-[0.2em] font-medium text-[10px]">Menú</h5>
+                <ul class="space-y-3">
+                    <li><a class="hover:text-accent transition-colors" href="#sobre-mi">Sobre mí</a></li>
+                    <li><a class="hover:text-accent transition-colors" href="#servicios">Servicios</a></li>
+                    <li><a class="hover:text-accent transition-colors" href="#paquetes">Tarifas</a></li>
+                    <li><a class="hover:text-accent transition-colors" href="#portfolio">Casos Reales</a></li>
+                    <li><a class="hover:text-accent transition-colors" href="#lead-magnet">Checklist Gratis</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-4 lg:col-span-2">
+                <h5 class="text-white mb-6 uppercase tracking-[0.2em] font-medium text-[10px]">Legal</h5>
+                <ul class="space-y-3">
+                    <li><a class="hover:text-white transition-colors" href="#">Privacidad</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#">Términos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 Sofia Asesoría Urbana. Palermo, Buenos Aires.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors"><span
+                        class="material-icons text-[18px]">camera_alt</span></a>
+                <a href="https://wa.me/5493416153151" target="_blank" class="hover:text-white transition-colors"><span
+                        class="material-icons text-[18px]">chat</span></a>
+                <a href="mailto:hola@sofia.com" class="hover:text-white transition-colors"><span
+                        class="material-icons text-[18px]">email</span></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5493416153151?text=Hola%20Sofia!%20Me%20interesa%20tu%20asesoría%20de%20imagen."
+        class="whatsapp-float shadow-2xl" target="_blank" title="Escribime por WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+        </svg>
+    </a>
+
+    <script>
+        // Scroll reveal con IntersectionObserver
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // Cerrar menú mobile al hacer click en un link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
